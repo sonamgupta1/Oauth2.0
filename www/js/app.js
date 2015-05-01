@@ -67,18 +67,24 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                 }
             })
 
-            .state('app.project_new', {
+            .state('app.add_project', {
                 cache:false,
-                url: '/project_new',
+                url: '/add_project',
                 views: {
                     'menuContent': {
-                        templateUrl: 'templates/project_new.html',
-                        controller: 'ProjectController'
+                        templateUrl: 'templates/add_project.html',
+                        controller: 'AddProjectController'
                     }
-                },
-                resolve: {
-                    projects: function(ProjectService) {
-                        return ProjectService.getProjects()
+                }
+            })
+
+            .state('app.update_project', {
+                cache:false,
+                url: '/update_project',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/update_project.html',
+                        controller: 'UpdateProjectController'
                     }
                 }
             })
@@ -98,6 +104,57 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                     }
                 }
             })
+
+            .state('app.add_organization', {
+                cache:false,
+                url: '/add_organization',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/add_organization.html',
+                        controller: 'AddOrganizationController'
+                    },
+                    resolve: {
+                        organizations: function($stateParams,OrganizationService) {
+                            return OrganizationService.getOrganizations($stateParams.project_id)
+
+                        }
+                    }
+                }
+            })
+
+            .state('app.update_organization', {
+                cache:false,
+                url: '/update_organization',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/update_organization.html',
+                        controller: 'UpdateOrganizationController'
+                    }
+                }
+            })
+
+            .state('app.add_contact', {
+                cache:false,
+                url: '/add_contact',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/add_contact.html',
+                        controller: 'AddContactController'
+                    }
+                }
+            })
+
+            .state('app.update_contact', {
+                cache:false,
+                url: '/update_contact',
+                views: {
+                    'menuContent': {
+                        templateUrl: 'templates/update_contact.html',
+                        controller: 'UpdateContactController'
+                    }
+                }
+            })
+
             .state('app.api', {
                 url: "/api",
                 views: {

@@ -27,8 +27,23 @@
           <ion-item nav-clear menu-close href="#/app/api">
               API
           </ion-item>
-          <ion-item nav-clear menu-close href="#/app/project_new">
-              Project New
+          <ion-item nav-clear menu-close ng-click="add_project()" ng-controller="NavigationCtrl">
+              Add Project
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="project_update()" ng-controller="NavigationCtrl">
+              Update Project
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="add_organization()" ng-controller="NavigationCtrl">
+              Add Organization
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="organization_update()" ng-controller="NavigationCtrl">
+              Update Organization
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="add_contact()" ng-controller="NavigationCtrl">
+              Add Contact
+          </ion-item>
+          <ion-item nav-clear menu-close ng-click="update_contact()" ng-controller="NavigationCtrl">
+              Update Contact
           </ion-item>
       </ion-list>
     </ion-content>
