@@ -153,17 +153,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
                         controller: 'UpdateContactController'
                     }
                 }
-            })
-
-            .state('app.api', {
-                url: "/api",
-                views: {
-                    'menuContent': {
-                        templateUrl: "templates/api.html",
-                        controller: 'ApiCtrl'
-                    }
-                }
             });
+
+
 
         // if none of the above states are matched, use this as the fallback
         $urlRouterProvider.otherwise('/app/signin');

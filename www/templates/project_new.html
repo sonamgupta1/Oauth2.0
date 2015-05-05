@@ -1,37 +1,17 @@
 <ion-view>
     <ion-content>
-        <!--<label class="item item-input">-->
-            <!--<span class="input-label" ng-model="project_new.name">Project Name</span>-->
-            <!--<input type="text">-->
-        <!--</label>-->
-        <!--<label class="item item-input">-->
-            <!--<span class="input-label" ng-model="project_new.billing_code">Billing Code</span>-->
-            <!--<input type="text">-->
-        <!--</label>-->
-        <!--<label class="item item-input">-->
-            <!--<span class="input-label" ng-model="project_new.client_code">Client Name</span>-->
-            <!--<input type="text">-->
-        <!--</label>-->
-
         <ion-list>
             <input type="text" placeholder="Project Name" ng-model="project_new.name" class="default_input">
-        </ion-list>
 
-        <ion-list>
             <input type="text" placeholder="Billing Code" ng-model="project_new.billing_code" class="default_input">
-        </ion-list>
 
-        <ion-list>
             <input type="text" placeholder="Client Name" ng-model="project_new.client_name"
                    class="default_input">
         </ion-list>
-
-
         <div class="item item-body">
             <button class="button button-full button-positive" ng-click="CreateProject()">
                 Create Project
             </button>
         </div>
-
     </ion-content>
 </ion-view>

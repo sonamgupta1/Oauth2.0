@@ -3,33 +3,39 @@ angular.module('starter.controllers', [])
     ///////////////////////////////////////////   Signin Ctrl //////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    .controller('NavigationCtrl', function ($scope, $state) {
+    .controller('NavigationCtrl', function ($scope, $state,OrganizationService) {
         $scope.add_project = function(){
-            console.log('000000')
+
             $state.go('app.add_project', {}, {reload: true})
 
         }
 
+        $scope.getProjects = function() {
+            $state.go('app.projects', {}, {reload: true})
+        }
+        $scope.getOrganizations = function(){
+            $state.go('app.organizations', {project_id: 9}, {reload: true})
+        }
+
         $scope.project_update = function() {
-            console.log("sonam2");
+
             $state.go('app.update_project', {}, {reload: true})
         }
         $scope.add_organization = function(){
-            console.log("sonam3");
+
             $state.go('app.add_organization', {}, {reload: true})
 
         }
         $scope.organization_update = function(){
-            console.log("sonam gupta");
+
             $state.go('app.update_organization',{},{reload: true})
         }
         $scope.add_contact = function(){
-            console.log("sonam gupta1");
+
             $state.go('app.add_contact',{},{reload: true})
         }
         $scope.update_contact = function(){
-            console.log("sonam gupta8");
-            $state.go('app.update_contact',{},{reload: true})
+               $state.go('app.update_contact',{},{reload: true})
         }
     })
 
@@ -152,7 +158,6 @@ angular.module('starter.controllers', [])
 
                         deferred.reject("Problem authenticating");
                     })
-
             }
         }
 
@@ -163,20 +168,7 @@ angular.module('starter.controllers', [])
         }
     })
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////   Api Ctrl /////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////
 
-    .controller('ApiCtrl', function ($scope, $state,OrganizationService) {
-
-        $scope.getProjects = function() {
-            $state.go('app.projects', {}, {reload: true})
-        }
-        // Form data for the login modal
-        $scope.getOrganizations = function(){
-            $state.go('app.organizations', {project_id: 9}, {reload: true})
-        }
-    })
 
     ////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////   Secure Ctrl //////////////////////////////////////
@@ -206,7 +198,7 @@ angular.module('starter.controllers', [])
 
 
     .controller('UpdateProjectController', function ($scope,ProjectService) {
-        console.log('999999')
+
         $scope.update_project = {};
 
         $scope.UpdateProject = function (){
@@ -225,11 +217,11 @@ angular.module('starter.controllers', [])
             return ProjectService.updateProject({
                 parameters: parameters,
                 success: function (data) {
-                    console.log('hello')
+
                     $scope.update_project = {};
                 },
                 error: function (data) {
-                    console.log('hi')
+
                 }
             })
 
@@ -240,7 +232,7 @@ angular.module('starter.controllers', [])
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     .controller('AddProjectController', function ($scope,ProjectService) {
-        console.log('3244234')
+
         $scope.project_new = {};
 
         $scope.CreateProject = function (){
@@ -256,11 +248,11 @@ angular.module('starter.controllers', [])
             return ProjectService.createProject({
                 parameters: parameters,
                 success: function (data) {
-                    console.log('soname')
+
                     $scope.project_new = {};
                 },
                 error: function (data) {
-                    console.log('Rajeev')
+
                 }
             })
 
@@ -295,8 +287,6 @@ angular.module('starter.controllers', [])
     ////////////////////////////   Organization Controller   /////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     .controller('OrganizationController', function ($scope, organizations) {
-
-        // Form data for the login modal
         console.log('organizations')
         console.log(organizations)
         $scope.organizations = organizations;
@@ -309,7 +299,7 @@ angular.module('starter.controllers', [])
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     .controller('AddOrganizationController', function ($scope,OrganizationService) {
-        console.log('1')
+
         $scope.add_org = {};
 
         $scope.CreateOrganization = function (){
@@ -333,11 +323,11 @@ angular.module('starter.controllers', [])
             return OrganizationService.createOrganization({
                 parameters: parameters,
                 success: function (data) {
-                    console.log('sonam4')
+
                     $scope.add_org = {};
                 },
                 error: function (data) {
-                    console.log('Rajeev3')
+
                 }
             })
 
@@ -349,7 +339,7 @@ angular.module('starter.controllers', [])
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     .controller('UpdateOrganizationController', function ($scope,OrganizationService) {
-        console.log('4')
+
         $scope.update_org = {};
 
         $scope.UpdateOrganization = function (){
@@ -373,11 +363,11 @@ angular.module('starter.controllers', [])
             return OrganizationService.updateOrganization({
                 parameters: parameters,
                 success: function (data) {
-                    console.log('hii')
+
                     $scope.update_org = {};
                 },
                 error: function (data) {
-                    console.log('hiiiiii')
+
                 }
             })
 
@@ -427,11 +417,11 @@ angular.module('starter.controllers', [])
             return ContactService.createContact({
                 parameters: parameters,
                 success: function (data) {
-                    console.log('-----------------')
+
                     $scope.contact= {};
                 },
                 error: function (data) {
-                    console.log('+++++++++++++++')
+
                 }
             })
 
@@ -475,13 +465,10 @@ angular.module('starter.controllers', [])
             return ContactService.updateContact({
                 parameters: parameters,
                 success: function (data) {
-                    console.log('6')
                     $scope.contact_update= {};
                 },
-                error: function (data) {
-                    console.log('7')
+                error: function (data){
                 }
             })
-
         }
     })
