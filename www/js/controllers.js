@@ -9,6 +9,11 @@ angular.module('starter.controllers', [])
             $state.go('app.add_project', {}, {reload: true})
 
         }
+        $scope.login = function(){
+
+            $state.go('app.signin', {}, {reload: true})
+
+        }
 
         $scope.getProjects = function() {
             $state.go('app.projects', {}, {reload: true})
@@ -73,6 +78,20 @@ angular.module('starter.controllers', [])
         $scope.requestToken = $localStorage.get('requestToken', false)
         $scope.accessToken = $localStorage.get('accessToken', false);
 
+        var credentials = $localStorage.getObject('credentials');
+
+        var main_url = credentials.url;
+        var clientId = credentials.client_id;
+        var clientSecret = credentials.client_secret;
+        var appScope = credentials.appScope;
+
+        console.log("credentials",JSON.stringify(credentials));
+        console.log("url",credentials.url);
+        var redirect_uri = credentials.redirect_uri;
+        var url_auth = main_url + "/oauth/authorize";
+        var url_auth_token = main_url + "/oauth/token";
+
+
         var main_url = "http://ashish.staging.workinggrouplink.com"
         var clientId = "ccd00369add756d38a946494b934c4409535807cb9dad12cd8d393423ae48d9a";
         var clientSecret = "ebe355d1fe66b417aa71727935381e7320aafcd98ad9a510e49cd83a7fb00fc3";
@@ -80,7 +99,6 @@ angular.module('starter.controllers', [])
         var redirect_uri = 'https://localhost/callback'
         var url_auth = main_url + "/oauth/authorize";
         var url_auth_token = main_url + "/oauth/token";
-
 
 
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -188,8 +206,24 @@ angular.module('starter.controllers', [])
 
         $scope.settings = {};
 
+        $scope.settings.redirect_uri='https://localhost/callback';
+        $scope.settings.appScope = ["public", "write"];
+
+        if($localStorage.getObject('credentials')){
+            var credential = $localStorage.getObject('credentials');
+
+            var main_url = credential.url;
+            var clientId = credential.client_id;
+            var clientSecret = credential.client_secret;
+            var appScope = credential.appScope;
+            var redirect_uri = credentials.redirect_uri;
+
+        }
+
         $scope.saveInLocalStorage = function () {
             $localStorage.setObject("credentials", $scope.settings);
+            alert("credentials saved successfully");
+
         }
     })
     /////////////////////////////////////////////////////////////////////////////////////////////////////

@@ -41,7 +41,7 @@ angular.module('starter.services', [])
                     success(function (data, status, headers, config) {
                         console.log(JSON.stringify(data), 'success')
                         dfd.resolve(data)
-                    }),
+                    }).
                     error(function (data, status, headers, config) {
                         console.log(JSON.stringify(data), 'error')
                     });
@@ -142,8 +142,12 @@ angular.module('starter.services', [])
                     getOrganizations: function (project_id) {
                         var dfd = $q.defer()
 
-                        var _target_url = 'http://ashish.staging.workinggrouplink.com/erapis/v2/organizations.json?access_token='
-                            + $localStorage.get('access_token', null) + '&project_id=' + project_id
+                        console.log(project_id, 'project_id')
+                        var _target_url = 'http://ashish.staging.workinggrouplink.com/erapis/v2/organizations.json?project_id=9'
+//                             + 'project_id=' + 9
+//                        $http.defaults.headers.common.Authorization
+//                        $httpProvider.defaults.headers.get = { 'Authorization' : 'Bearer 7ebaf5c316aaef5bdc591bacd20f5005590b0d79dccb5710f46b80f465cb9474' }
+                        $http.defaults.headers.common.Authorization = 'Basic 7ebaf5c316aaef5bdc591bacd20f5005590b0d79dccb5710f46b80f465cb9474'
 
                         $http.get(_target_url).
                             success(function (data, status, headers, config) {
@@ -151,6 +155,7 @@ angular.module('starter.services', [])
                                 dfd.resolve(data)
                             }).
                             error(function (data, status, headers, config) {
+                                console.log('headers', JSON.stringify(headers))
                                 console.log(JSON.stringify(data), 'error')
                             });
 

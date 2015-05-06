@@ -2,29 +2,34 @@
     <ion-content>
         <div class="list card">
             <div class="item item-body">
-                <ion-list>
+
+                    <label class="item item-input item-stacked-label item-divider">
+                        URL
                     <input type="text" placeholder="URL" ng-model="settings.url" class="default_input">
-                </ion-list>
+                        </label>
 
-                <ion-list>
+
+                    <label class="item item-input item-stacked-label item-divider">
+                        Client Id
                     <input type="text" placeholder="Client Id" ng-model="settings.client_id" class="default_input">
-                </ion-list>
+                        </label>
 
-                <ion-list>
+                    <label class="item item-input item-stacked-label item-divider">
+                        Client Secret
                     <input type="text" placeholder="Client Secret" ng-model="settings.client_secret"
                            class="default_input">
-                </ion-list>
-
-                <ion-list>
-                    <input type="text" placeholder="API key" ng-model="settings.api_key"
+                        </label>
+                <label class="item item-input item-stacked-label item-divider">
+                       Redirect URL
+                    <input type="text" readonly="true" ng-model="settings.redirect_uri"
                            class="default_input">
-                </ion-list>
+                </label>
 
-                <ion-list>
-                    <input type="text" placeholder="Redirect URI" ng-model="settings.redirect_uri"
+                <label class="item item-input item-stacked-label item-divider">
+                    App Scope
+                    <input type="text" readonly="true" ng-model="settings.appScope"
                            class="default_input">
-                </ion-list>
-
+                </label>
                 <ion-list>
                     <button class="button button-full button-positive" ng-click="saveInLocalStorage()">
                         Save
